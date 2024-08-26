@@ -14,9 +14,9 @@ case $MENUCHOICE in
 	1)
 		echo "Congratulations for choosing the First Option";;
 	2)
-		echo "Choice 2 Chosen";;
+		echo "Choice 2 Chosen";; # the ;; has to go after the last block
 	3)
-		echo "Last Choice Made";;
+		echo "Last Choice Made";;# in the case statement.  It says the block is done
 	*)
-		echo "You chose unwisely";;
+		echo "You chose unwisely";; # or something
 esac
