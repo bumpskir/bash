@@ -1,0 +1,160 @@
+List of the shell script contents of the directory
+File:  - Contents #!/bin/bash
+#  simple array list and loop for display
+
+SERVERLIST=("web1" "web2" "web3" "web4")
+
+COUNT=0
+
+for INDEX in ${SERVERLIST[@]}; do
+	echo "Processing server: $INDEX"  #$SERVERLIST[$COUNT]"
+	COUNT=`expr $COUNT + 1`
+done
+	
+File:  - Contents #!/bin/bash
+# Demo of command line values passed in with our shell script
+
+echo "The following was passed into the script at run time $1 and a second one $2"
+File:  - Contents #!/bin/bash
+# writing to /dev/null example
+
+echo  "This is going to the console the next line shoudl not!"
+
+echo "This is going to the black hole" >> /dev/null
+File:  - Contents #!/bin/bash
+
+clear
+
+echo "This script will give us environment information"
+echo "================================================"
+echo ""
+echo "Hello Username : $USER"
+echo ""
+echo "Your home dir is :  $HOME"
+echo ""
+echo "Your History File will ignore : $HISTCONTROL"
+echo ""
+echo " Your Termingal is type :  $TERM"
+echo ""
+File:  - Contents #!/bin/bash
+# Testing using a couple of expressions in bash
+echo "2 + 2"
+expr 2 + 2 
+echo ""
+echo "2 + \(2 times 4\)"
+expr 2 + 2 \* 4
+echo ""
+echo "\( 2 + 2 \) * 4 should be 4 * 4"
+expr \( 2 + 2 \) \* 4
+File:  - Contents #!/bin/bash
+
+if [ -f ~/test.txt ]; then
+	echo "Fuck Yeah!"
+fi
+File:  - Contents #!/bin/bash
+# this is a demo of the for loop
+
+echo "List of the shell script contents of the directory"
+
+SHELLSCRIPTS=`ls *.sh`
+
+for SCRIPTS in $SHELLSCRIPTS; do
+	DISPLAY="`cat $SCRIPTS`"
+	echo "File: $SCRIPT - Contents $DISPLAY"
+done
+File:  - Contents #!/bin/bash
+# test multiple expressions in single if statement
+
+FILENAME=$1
+
+echo "Testing for file $FILENAME and readability"
+
+# -f will say the file does exist and -r is the file is readable
+if [ -f $FILENAME ] && [ -r $FILENAME ]
+  then
+	  echo "File $FILENAME existis AND is readable"
+fi
+File:  - Contents #!/bin/bash
+# Simple example of if then else and nested if statements
+
+echo "Enter a number between 1 and 3:"
+read VALUE
+
+if [ "$VALUE" -eq "1" ] 2>/dev/null || [ "$VALUE" -eq "2" ] 2>/dev/null || [ "$VALUE" -eq "3" ] 2>/dev/null ; then
+  echo "You entered $VALUE"
+else
+  echo "You did not follow directions!"
+fi
+File:  - Contents #!/bin/bash
+# Simple example of if then else and nested if statements
+
+echo "Enter a number between 1 and 3:"
+read VALUE
+
+if [ "$VALUE" -eq "1" ] 2>/dev/null || [ "$VALUE" -eq "2" ] 2>/dev/null || [ "$VALUE" -eq "3" ] 2>/dev/null ; then
+  echo "You entered $VALUE"
+else
+  echo "You did not follow directions!"
+fi
+File:  - Contents #!/bin/bash
+# Simple example of if then else and nested if statements
+
+clear
+
+echo "Enter a number between 1 and 3:"
+read VALUE
+
+if [ "$VALUE" -eq "1" ] 2>/dev/null; then
+  echo "You entered #1"
+elif [ "$VALUE" -eq "2" ] 2>/dev/null; then
+  echo "You entered #2"
+elif [ "$VALUE" -eq "3" ] 2>/dev/null; then
+  echo "You entered #3"
+else
+  echo "You did not follow the directions!"
+fi
+File:  - Contents #!/bin/bash
+# Interactive script for user input
+
+echo "Enter Your First Name: "
+read FIRSTNAME
+
+echo "Hello $FIRSTNAME"
+File:  - Contents #!/bin/bash
+# simple if script for guessing a number
+
+FILENAME=$1
+
+echo "Guess the secret number"
+echo "________________________ "
+echo "Enter a number between 1 and 5: "
+read GUESS
+
+if [ $GUESS -eq 3 ]
+  then 
+	  echo "You guessed the Correct Number!"
+
+fi
+
+echo "Also going to test for existence of a file named $FILENAME"
+# You could use -a -e or -f here You could do it doesn't exist with !
+if [ -a $FILENAME ]
+  then 
+	  echo "File $FILENAME does indeed exist!"
+fi
+File:  - Contents #!/bin/bash
+# Command substitution
+
+user=`whoami`
+TODAYSDATE=`date`
+USERFILES=`find /home -user $user`
+
+echo "Todays date is : $TODAYSDATE
+echo "All files owned by USER : $USERFILES
+File:  - Contents #!/bin/bash
+
+test=`ls -l ~/bashScripts/`
+
+echo "the value of test is $test"
+echo ""
+echo "Hope it was right"
